@@ -2,7 +2,7 @@
 
 A sample of using Koin, Corotine, Retrofit2, MVVM, Data Binding on AndroidX
 
-The used API : The Movie DB (https://www.newsapi.org)
+The used API : https://www.newsapi.org
 
 # Screenshot:
 
