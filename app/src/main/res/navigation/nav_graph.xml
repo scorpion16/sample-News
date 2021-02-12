@@ -14,16 +14,13 @@
 		<action
 			android:id="@+id/action_Show_Details"
 			app:destination="@id/SecondFragment" />
+
 	</fragment>
 	<fragment
 		android:id="@+id/SecondFragment"
 		android:name="com.example.myapplication.ui.main.view.DetailsFragment"
 		android:label="@string/second_fragment_label"
 		tools:layout="@layout/fragment_details">
-
-<!--		<action-->
-<!--			android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--			app:destination="@id/FirstFragment" />-->
 
 		<argument
 			android:name="model"

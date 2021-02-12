@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.R
@@ -22,6 +23,7 @@ import com.example.myapplication.ui.main.viewmodel.MainViewModel
 import com.example.myapplication.utils.Status
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class ListFragment : Fragment() {
 
@@ -73,7 +75,7 @@ class ListFragment : Fragment() {
         adapter.setItemClickListener(object :OnItemClick<Article> {
             override fun onItemClicked(item: Article) {
                 var bundle = bundleOf("article" to item )
-                findNavController().navigate(R.id.action_Show_Details , bundle)
+                findNavController().navigate(R.id.action_Show_Details , bundle , getNavOptions())
             }
         })
         recyclerView.addOnScrollListener(object : PaginationScrollListener(recyclerView.layoutManager as GridLayoutManager) {
@@ -123,5 +125,19 @@ class ListFragment : Fragment() {
             addItems(news.articles)
             notifyDataSetChanged()
         }
+    }
+    protected fun getNavOptions(): NavOptions? {
+        return NavOptions.Builder()
+            .setEnterAnim(R.anim.slide_in_left)
+            .setExitAnim(R.anim.slide_out_right)
+            .setPopEnterAnim(R.anim.slide_in_right)
+            .setPopExitAnim(R.anim.slide_out_left)
+            .build()
+//        return NavOptions.Builder()
+//            .setEnterAnim(R.anim.nav_default_enter_anim)
+//            .setExitAnim(R.anim.nav_default_exit_anim)
+//            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+//            .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
+//            .build()
     }
 }
